@@ -13,6 +13,11 @@
   "author": "Carlos Gutierrez",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/register": "^7.16.0",
     "@cucumber/cucumber": "^7.2.1",
     "@wdio/cli": "^7.7.3",
     "@wdio/cucumber-framework": "^7.7.3",
@@ -20,8 +25,10 @@
     "@wdio/selenium-standalone-service": "^7.7.3",
     "@wdio/spec-reporter": "^7.7.3",
     "@wdio/sync": "^7.7.3",
+    "debug": "^4.3.2",
     "fs-extra": "^9.0.1",
-    "multiple-cucumber-html-reporter": "^1.18.0"
+    "multiple-cucumber-html-reporter": "^1.18.0",
+    "strip-ansi": "^7.0.1"
   },
   "dependencies": {
     "chai": "^4.2.0",
@@ -32,5 +39,6 @@
     "wdio-cucumberjs-json-reporter": "^2.0.2",
     "wdio-json-reporter": "^2.0.0",
     "webdriverio": "^7.7.3"
-  }
+  },
+  "packageManager": "yarn@2.4.3"
 }

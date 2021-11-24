@@ -1,3 +1,4 @@
+
 const { config } = require("./wdio.conf.js");
 
 (config.maxInstances = 6),
