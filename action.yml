@@ -1,0 +1,26 @@
+name: Branch QA
+inputs:
+  name:
+    description: 'The script to run. Pick from headless or heroku. Defaults to headless.'
+    required: true
+    default: 'headless'
+
+description:
+  Runs the legacy suite of smoke tests for xgovformbuilder/digital-form-builder
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v2
+      run: |
+        yarn test:headless
+        ls -lah smoke-tests/designer/reports/
+    - name: "Tar files"
+      if: ${{ success() || failure() }}
+      shell: bash
+      run: tar -cvf smoke-tests.tar smoke-tests/designer/reports
+    - uses: actions/upload-artifact@v2
+      if: ${{ success() || failure() }}
+      with:
+        name: smoke-tests
+        path: smoke-tests.tar
+        retention-days: 14
