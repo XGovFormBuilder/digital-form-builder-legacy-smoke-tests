@@ -10,18 +10,20 @@ description:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v2
+    - name: Checkout tools repo
+      uses: actions/checkout@v2
       with:
-        path: node_modules
+        repository: xgovformbuilder/digital-form-builder-legacy-smoke-tests
+        path: smoke
     - uses: actions/cache@v2
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
-        path: node_modules
-        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+        path: smoke/node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('smoke/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
     - run: |
-        cat package.json
+        cd smoke
         yarn
         yarn run test:headless
         ls -lah smoke-tests/designer/reports/
