@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "12.x"
         run: |
-          yarn smoke-test-headless
+          yarn test:headless
           ls -lah smoke-tests/designer/reports/
       - name: "Tar files"
         if: ${{ success() || failure() }}
