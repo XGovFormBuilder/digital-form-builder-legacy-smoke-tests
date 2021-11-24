@@ -21,8 +21,9 @@ runs:
         restore-keys: |
           ${{ runner.os }}-yarn-
     - run: |
+        cat package.json
         yarn
-        yarn test:headless
+        yarn run test:headless
         ls -lah smoke-tests/designer/reports/
       shell: bash
     - name: "Tar files"
