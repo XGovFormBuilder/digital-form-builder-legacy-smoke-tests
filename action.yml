@@ -11,9 +11,10 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v2
-      run: |
+    - run: |
         yarn test:headless
         ls -lah smoke-tests/designer/reports/
+      shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
       shell: bash
