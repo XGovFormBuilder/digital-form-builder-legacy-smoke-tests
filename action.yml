@@ -10,7 +10,7 @@ description:
 runs:
   using: composite
   steps:
-     - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2
       with:
         node-version: '12'
     - name: Checkout tools repo
@@ -27,7 +27,7 @@ runs:
           ${{ runner.os }}-yarn-
     - run: |
         cd smoke
-        node -v
+        node
         yarn
         yarn run test:headless
         ls -lah smoke-tests/designer/reports/
