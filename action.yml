@@ -27,7 +27,7 @@ runs:
           ${{ runner.os }}-yarn-
     - run: |
         cd smoke
-        node
+        node -v
         yarn
         yarn run test:headless
         ls -lah smoke-tests/designer/reports/
