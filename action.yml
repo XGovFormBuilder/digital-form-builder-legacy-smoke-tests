@@ -12,6 +12,7 @@ runs:
   steps:
     - uses: actions/checkout@v2
     - run: |
+        yarn
         yarn test:headless
         ls -lah smoke-tests/designer/reports/
       shell: bash
