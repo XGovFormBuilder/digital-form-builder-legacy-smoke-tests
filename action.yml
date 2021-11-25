@@ -1,7 +1,7 @@
 name: Branch QA
 inputs:
-  name:
-    description: 'The script to run. Pick from headless or heroku. Defaults to headless.'
+  script:
+    description: 'The script to run. Pick from headless or heroku. Defaults to headless (pointing to localhost:300[0|9])'
     required: true
     default: 'headless'
 
@@ -29,8 +29,8 @@ runs:
         cd smoke
         node -v
         yarn
-        yarn run test:heroku
-#        ls -lah smoke/designer/reports/
+        yarn run test:{{inputs.script}}
+        ls -lah smoke/designer/reports/
       shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
