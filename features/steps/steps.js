@@ -122,10 +122,10 @@ Then(
     ).to.be.false;
   }
 );
-
+let newPageName;
 When("I enter the details for my page", () => {
-  this.newPageName = "Personal Details";
-  editPage.pageTitle.setValue(this.newPageName);
+  newPageName = "Personal Details";
+  editPage.pageTitle.setValue(newPageName);
   editPage.saveBtn.click();
 });
 
