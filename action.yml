@@ -29,7 +29,7 @@ runs:
         cd smoke
         node -v
         yarn
-        yarn run test:{{inputs.script}}
+        yarn run test:${{inputs.script}}
         ls -lah designer/reports/
       shell: bash
     - name: "Tar files"
