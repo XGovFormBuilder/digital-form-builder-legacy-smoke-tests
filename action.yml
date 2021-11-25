@@ -29,13 +29,13 @@ runs:
         cd smoke
         node -v
         yarn
-        yarn run test:headless
-        ls -lah smoke-tests/designer/reports/
+        yarn run test:heroku-debug
+        ls -lah smoke/designer/reports/
       shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
       shell: bash
-      run: tar -cvf smoke-tests.tar smoke-tests/designer/reports
+      run: tar -cvf smoke-tests.tar smoke/designer/reports
     - uses: actions/upload-artifact@v2
       if: ${{ success() || failure() }}
       with:
