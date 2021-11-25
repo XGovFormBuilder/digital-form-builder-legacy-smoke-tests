@@ -30,12 +30,12 @@ runs:
         node -v
         yarn
         yarn run test:{{inputs.script}}
-        ls -lah smoke/designer/reports/
+        ls -lah designer/reports/
       shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
       shell: bash
-      run: tar -cvf smoke-tests.tar smoke/designer/reports
+      run: tar -cvf smoke-tests.tar designer/reports
     - uses: actions/upload-artifact@v2
       if: ${{ success() || failure() }}
       with:
