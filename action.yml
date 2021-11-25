@@ -29,8 +29,8 @@ runs:
         cd smoke
         node -v
         yarn
-        yarn run test:heroku-debug
-        ls -lah smoke/designer/reports/
+        yarn run test:heroku
+#        ls -lah smoke/designer/reports/
       shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
