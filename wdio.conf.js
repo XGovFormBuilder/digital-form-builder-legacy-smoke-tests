@@ -67,7 +67,7 @@ exports.config = {
     profile: [],
     strict: false,
     tagExpression: "not @wip",
-    timeout: 60000,
+    timeout: 100000,
     ignoreUndefinedDefinitions: true,
   },
   ...hooks,
