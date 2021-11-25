@@ -8,16 +8,16 @@ const {
 } = require("../pageobjects/sections");
 const actions = require("../actions/actions");
 const { acceptAlert } = require("../../support/testHelpers");
-
+let newPageName;
 Given("I have chosen to {string} to my form", (menuOption) => {
   actions.createNewConfig();
   navMenu.buttonByName(menuOption).click();
 });
 
 When("I link this page to link from the {string}", (linkedPage) => {
-  this.newPageName = "Third page";
+  newPageName = "Third page";
   addPage.linkFrom(linkedPage);
-  addPage.pageTitle.setValue(this.newPageName);
+  addPage.pageTitle.setValue(newPageName);
   addPage.saveBtn.click();
 });
 

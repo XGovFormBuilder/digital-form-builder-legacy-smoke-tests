@@ -17,6 +17,7 @@ const fieldData = require("../../data/componentFieldData");
 const { acceptAlert, toCamelCase } = require("../../support/testHelpers");
 const Actions = require("../actions/actions");
 const testActions = require("../actions/actions");
+let pageComponents;
 
 Given("I have created a new form configuration", () => {
   Actions.createNewConfig();
@@ -75,15 +76,15 @@ Then("the {string} control is displayed in the {string}", function (
 });
 
 When("I add multiple components to the {string}", (pageName) => {
-  this.pageComponents = ["Email address", "Date"];
-  this.pageComponents.forEach((component) =>
+  pageComponents = ["Email address", "Date"];
+  pageComponents.forEach((component) =>
     Actions.createComponentForPage(component, pageName)
   );
 });
 
 Then("all the components are displayed in the {string}", (pageName) => {
   browser.pause(500);
-  this.pageComponents.forEach(
+  pageComponents.forEach(
     (component) =>
       chai.expect(
         formDesigner
@@ -248,9 +249,9 @@ When("I choose Edit page for the {string}", function (pageName) {
   formDesigner.editPage(pageName).click();
 });
 
-When("I change the page title to {string}", function (newPageName) {
-  this.newPageName = newPageName;
-  editPage.pageTitle.setValue(this.newPageName);
+When("I change the page title to {string}", function (name) {
+  newPageName = name;
+  editPage.pageTitle.setValue(newPageName);
   editPage.saveBtn.click();
 });
 
@@ -263,9 +264,9 @@ When("I change the page path to {string}", function (pathName) {
 
 Then("the changes are reflected in the page designer", function () {
   browser.waitUntil(
-    () => formDesigner.pages[0].heading.getText() === this.newPageName
+    () => formDesigner.pages[0].heading.getText() === newPageName
   );
-  expect(formDesigner.pageHeading(this.newPageName)).toBeDisplayed();
+  expect(formDesigner.pageHeading(newPageName)).toBeDisplayed();
 });
 
 When("I choose {string} from the designer menu", (menuOption) => {
@@ -274,7 +275,7 @@ When("I choose {string} from the designer menu", (menuOption) => {
 
 Then("the page is added in the designer", () => {
   browser.waitUntil(() => formDesigner.pages.length === 4);
-  expect(formDesigner.pageHeadingsText.includes(this.newPageName)).toEqual(
+  expect(formDesigner.pageHeadingsText.includes(newPageName)).toEqual(
     true
   );
 });
