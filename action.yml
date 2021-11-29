@@ -32,7 +32,7 @@ runs:
         yarn run test:${{inputs.script}}
       shell: bash
     - run: |
-        ps
+        ls
         ls -lah reports/
       shell: bash
     - name: "Tar files"
