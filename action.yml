@@ -30,7 +30,10 @@ runs:
         node -v
         yarn
         yarn run test:${{inputs.script}}
-        ls -lah reports
+      shell: bash
+    - run: |
+        ps
+        ls -lah reports/
       shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
