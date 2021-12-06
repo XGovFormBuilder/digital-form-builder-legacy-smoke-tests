@@ -10,9 +10,6 @@ jobs:
       - uses: xgovformbuilder/digital-form-builder-legacy-smoke-tests@main
         with:
           script: 'heroku'
-      - name: "Tar files"
-        if: ${{ success() || failure() }}
-        run: tar -cvf smoke-tests-nightly-heroku.tar smoke-tests/designer/reports
 
       - uses: actions/upload-artifact@v2
         if: ${{ success() || failure() }}
