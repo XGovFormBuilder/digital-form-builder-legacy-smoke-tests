@@ -30,7 +30,6 @@ runs:
         node -v
         yarn
         yarn run test:${{inputs.script}}
-        ls -lah smoke-tests/designer/reports/
       shell: bash
     - name: "Tar files"
       if: ${{ success() || failure() }}
