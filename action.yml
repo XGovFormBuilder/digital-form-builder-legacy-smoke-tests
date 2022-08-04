@@ -42,4 +42,4 @@ runs:
 
     - name: Run pa11y
       shell: bash
-      run: yarn designer dlx pa11y-ci
+      run: yarn dlx pa11y-ci
