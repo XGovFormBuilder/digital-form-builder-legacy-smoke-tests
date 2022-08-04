@@ -27,8 +27,6 @@ runs:
           ${{ runner.os }}-yarn-
     - run: |
         cd smoke
-        node -v
-        yarn
         yarn run test:${{inputs.script}}
       shell: bash
     - name: "Tar files"
@@ -41,3 +39,7 @@ runs:
         name: smoke-tests
         path: smoke-tests.tar
         retention-days: 14
+
+    - name: Run pa11y
+      shell: bash
+      run: yarn designer dlx pa11y-ci
