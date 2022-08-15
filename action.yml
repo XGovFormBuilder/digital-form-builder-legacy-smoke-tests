@@ -27,22 +27,20 @@ runs:
           ${{ runner.os }}-yarn-${{ hashFiles('smoke/yarn.lock') }}
           ${{ runner.os }}-yarn-
     - run: |
-        ls
         cd smoke
-        ls
         yarn
         yarn run test:${{inputs.script}}
       shell: bash
-#    - name: "Tar files"
-#      if: ${{ success() || failure() }}
-#      shell: bash
-#      run: tar -cvf smoke-tests.tar reports
-#    - uses: actions/upload-artifact@v2
-#      if: ${{ success() || failure() }}
-#      with:
-#        name: smoke-tests
-#        path: smoke-tests.tar
-#        retention-days: 14
+    - name: "Tar files"
+      if: ${{ success() || failure() }}
+      shell: bash
+      run: tar -cvf smoke-tests.tar reports
+    - uses: actions/upload-artifact@v2
+      if: ${{ success() || failure() }}
+      with:
+        name: smoke-tests
+        path: smoke-tests.tar
+        retention-days: 14
 
     - name: Run pa11y
       shell: bash
