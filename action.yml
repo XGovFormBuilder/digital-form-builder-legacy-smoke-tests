@@ -28,6 +28,7 @@ runs:
           ${{ runner.os }}-yarn-
     - run: |
         cd smoke
+        yarn
         yarn run test:${{inputs.script}}
       shell: bash
     - name: "Tar files"
