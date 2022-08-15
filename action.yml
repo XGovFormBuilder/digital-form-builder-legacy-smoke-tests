@@ -10,14 +10,14 @@ description:
 runs:
   using: composite
   steps:
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '12'
     - name: Checkout tools repo
       uses: actions/checkout@v2
       with:
         repository: xgovformbuilder/digital-form-builder-legacy-smoke-tests
         path: smoke
+      - uses: actions/setup-node@v2
+          with:
+            node-version: '12'
     - uses: actions/cache@v2
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
@@ -27,20 +27,22 @@ runs:
           ${{ runner.os }}-yarn-${{ hashFiles('smoke/yarn.lock') }}
           ${{ runner.os }}-yarn-
     - run: |
+        ls
         cd smoke
+        ls
         yarn
         yarn run test:${{inputs.script}}
       shell: bash
-    - name: "Tar files"
-      if: ${{ success() || failure() }}
-      shell: bash
-      run: tar -cvf smoke-tests.tar reports
-    - uses: actions/upload-artifact@v2
-      if: ${{ success() || failure() }}
-      with:
-        name: smoke-tests
-        path: smoke-tests.tar
-        retention-days: 14
+#    - name: "Tar files"
+#      if: ${{ success() || failure() }}
+#      shell: bash
+#      run: tar -cvf smoke-tests.tar reports
+#    - uses: actions/upload-artifact@v2
+#      if: ${{ success() || failure() }}
+#      with:
+#        name: smoke-tests
+#        path: smoke-tests.tar
+#        retention-days: 14
 
     - name: Run pa11y
       shell: bash
