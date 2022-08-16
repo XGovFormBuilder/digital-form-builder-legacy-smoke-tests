@@ -30,7 +30,7 @@ runs:
     - name: "Tar files"
       if: ${{ success() || failure() }}
       shell: bash
-      run: tar -cvf ${{inputs.working-directory}}/smoke-tests.tar reports
+      run: tar -cvf smoke-tests.tar ${{inputs.working-directory}}/reports
     - uses: actions/upload-artifact@v2
       if: ${{ success() || failure() }}
       with:
