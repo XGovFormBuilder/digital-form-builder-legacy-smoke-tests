@@ -40,4 +40,6 @@ runs:
 
     - name: Run pa11y
       shell: bash
+      with:
+        path: ${{inputs.working-directory}}
       run: yarn dlx pa11y-ci
