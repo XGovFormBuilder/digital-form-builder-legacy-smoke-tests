@@ -38,7 +38,15 @@ runs:
         path: smoke-tests.tar
         retention-days: 14
 
-    - name: Run pa11y
+    - name: Run pa11y (local)
+      if: ${{inputs.script == 'headless'}}
       shell: bash
       working-directory: ${{inputs.working-directory}}
       run: yarn dlx pa11y-ci
+
+    - name: Run pa11y (heroku)
+      if: ${{inputs.script == 'heroku'}}
+      shell: bash
+      working-directory: ${{inputs.working-directory}}
+      run: yarn dlx pa11y-ci -c .pa11lyci.heroku.json
+

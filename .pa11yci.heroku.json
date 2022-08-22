@@ -1,0 +1,8 @@
+{
+    "urls": [
+      "https://digital-form-builder-designer.herokuapp.com/app",
+      "https://digital-form-builder-designer.herokuapp.com/app/new",
+      "https://digital-form-builder-designer.herokuapp.com/app/choose-existing",
+      "https://digital-form-builder-designer.herokuapp.com/app/designer/test-form-a"
+    ]
+  }
