@@ -48,5 +48,5 @@ runs:
       if: ${{inputs.script == 'heroku'}}
       shell: bash
       working-directory: ${{inputs.working-directory}}
-      run: yarn dlx pa11y-ci -c .pa11lyci.heroku.json
+      run: yarn dlx pa11y-ci -c .pa11yci.heroku.json
 
